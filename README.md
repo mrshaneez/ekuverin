@@ -28,11 +28,12 @@ plus the environment variables below and the admin + shared content come alive.
 3. Add the admin environment variables. Project -> Settings -> Environment Variables:
 
        ADMIN_EMAIL          mr.shaneez@gmail.com
-       ADMIN_PASSWORD_HASH  scrypt:5eb31012c2a74ebce3d934f19c0a19be:c39cf1ef2cc9f7f66f4d75d61a112e0d4b8c53c8e02ffc853341447e646104148201a8d1b9239ef3c8793f3d739dedb2154aea2ecbdda16c981680831ceac83a
-       AUTH_SECRET          cbb05cd30ab4c30ed2974dd55c145da5b3aeb1cf1630cb89a525ef33fea7c07b
+       ADMIN_PASSWORD_HASH  <paste the scrypt hash from your notes — do NOT commit it>
+       AUTH_SECRET          <paste a long random secret — do NOT commit it>
 
    ADMIN_PASSWORD_HASH is a salted scrypt hash of your password — the plaintext is never stored
-   anywhere. AUTH_SECRET signs your login session token; keep it private.
+   anywhere. AUTH_SECRET signs your login session token; keep it private. Set all three of these
+   only in Vercel's Environment Variables — never commit them to the repo.
 
 4. Deploy / redeploy. Add ekuveri.com under Settings -> Domains and follow the DNS steps.
 
