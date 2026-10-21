@@ -63,6 +63,12 @@ function verify(tok) {
 }
 function bearer(req) { return (req.headers.authorization || '').replace(/^Bearer\s+/i, '').trim(); }
 function passwordOK(password) {
+  const plain = process.env.ADMIN_PASSWORD;
+  if (plain) {
+    const a = Buffer.from(String(password || ''));
+    const b = Buffer.from(String(plain));
+    return a.length === b.length && crypto.timingSafeEqual(a, b);
+  }
   const stored = process.env.ADMIN_PASSWORD_HASH || '';
   const parts = stored.split(':');
   if (parts.length !== 3 || parts[0] !== 'scrypt') return false;
@@ -130,6 +136,9 @@ export default async function handler(req, res) {
       email: has(process.env.ADMIN_EMAIL),
       hash: has(process.env.ADMIN_PASSWORD_HASH),
       secret: has(process.env.AUTH_SECRET),
+      passwordMode: process.env.ADMIN_PASSWORD ? 'plain' : (process.env.ADMIN_PASSWORD_HASH ? 'hash' : 'none'),
+      hashValid: (() => { const p = (process.env.ADMIN_PASSWORD_HASH || '').split(':'); return p.length === 3 && p[0] === 'scrypt' && /^[0-9a-f]+$/i.test(p[1] || '') && /^[0-9a-f]+$/i.test(p[2] || '') && (p[2] || '').length === 128; })(),
+      emailMasked: (() => { const e = (process.env.ADMIN_EMAIL || '').trim(); if (!e) return ''; const i = e.indexOf('@'); return i < 1 ? e[0] + '***' : e[0] + '***' + e.slice(i - 1); })(),
       storeVars: Object.keys(process.env).filter((k) => /KV|REDIS|UPSTASH|STORAGE/i.test(k)),
     });
   }
@@ -152,7 +161,7 @@ export default async function handler(req, res) {
     if (action === 'login') {
       const email = clean(body.email, 200).trim().toLowerCase();
       const adminEmail = (process.env.ADMIN_EMAIL || '').trim().toLowerCase();
-      if (!adminEmail || !process.env.ADMIN_PASSWORD_HASH || !process.env.AUTH_SECRET) {
+      if (!adminEmail || !(process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH) || !process.env.AUTH_SECRET) {
         return res.status(503).json({ error: 'auth not configured' });
       }
       if (email !== adminEmail || !passwordOK(body.password)) {
