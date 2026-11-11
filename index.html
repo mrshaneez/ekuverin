@@ -81,15 +81,11 @@ body[data-page="gallery"] .page--gallery,
 body[data-page="about"] .page--about{display:block}
 
 /* ===== HERO (home) ===== */
-.hero{position:relative;min-height:calc(100svh - var(--botnav));display:flex;align-items:flex-end;color:var(--foam);overflow:hidden;isolation:isolate}
-.hero-photo{position:absolute;inset:0;z-index:-2;background:#06303B url("hero.jpg") center 44%/cover no-repeat;transform-origin:center;animation:kenburns 30s ease-in-out infinite alternate}
-@keyframes kenburns{from{transform:scale(1.03)}to{transform:scale(1.12)}}
-.hero-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,48,59,.34) 0%,rgba(6,48,59,0) 24%,rgba(6,48,59,.10) 50%,rgba(6,48,59,.58) 78%,rgba(5,32,38,.93) 100%)}
-.hero-life{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.hero-life .glint{position:absolute;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95),rgba(255,255,255,0) 70%);opacity:0;animation:twinkle 5.5s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.9;transform:scale(1)}}
-.hero-life .drift-boat{position:absolute;top:66%;left:-10%;width:54px;height:auto;opacity:0;filter:drop-shadow(0 3px 6px rgba(5,32,38,.5));animation:boatcross 42s linear infinite}
-@keyframes boatcross{0%{left:-10%;opacity:0}7%{opacity:.8}93%{opacity:.8}100%{left:106%;opacity:0}}
+.hero{position:relative;min-height:calc(100svh - var(--botnav));display:flex;align-items:center;color:var(--foam);overflow:hidden;isolation:isolate}
+.hero-sea{position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(120% 80% at 72% 18%, rgba(240,192,106,.55) 0%, rgba(240,192,106,0) 42%),
+  linear-gradient(180deg,#F3DCB0 0%,#CFE3D9 18%,#6FC9C4 38%,#1C9C97 56%,#0B6168 76%,#06303B 100%)}
+.hero-glow{position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 40% at 72% 20%, rgba(255,255,255,.45), transparent 60%);mix-blend-mode:screen;opacity:.7}
 .hero-scene{position:absolute;left:0;right:0;bottom:0;z-index:-1;width:100%;height:auto}
 .shimmer{stroke:rgba(255,255,255,.5);stroke-linecap:round;fill:none;animation:drift 7s ease-in-out infinite}
 .shimmer.b{animation-duration:9s;animation-delay:-2s;stroke:rgba(255,255,255,.35)}
@@ -97,9 +93,9 @@ body[data-page="about"] .page--about{display:block}
 @keyframes drift{0%,100%{transform:translateX(-6px);opacity:.5}50%{transform:translateX(10px);opacity:.9}}
 .sun{animation:bob 9s ease-in-out infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .dhoni{animation:sail 12s ease-in-out infinite}@keyframes sail{0%{transform:translateX(0)}100%{transform:translateX(40px)}}
-.hero-content{position:relative;z-index:1;padding-block:0 7.5rem}
+.hero-content{position:relative;z-index:1;padding-block:8vh}
 .hero .eyebrow{color:rgba(252,248,240,.9);text-shadow:0 1px 14px rgba(6,48,59,.4)}
-.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(4.5rem,12vw,9.5rem);line-height:.9;letter-spacing:-.02em;margin:.5rem 0 0;text-shadow:0 2px 34px rgba(5,32,38,.55),0 1px 3px rgba(5,32,38,.45)}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(4.5rem,12vw,9.5rem);line-height:.9;letter-spacing:-.02em;margin:.5rem 0 0;text-shadow:0 2px 40px rgba(6,48,59,.35)}
 .hero h1 .dv{display:block;font-family:var(--thaana-head);font-weight:400;font-size:.26em;letter-spacing:0;opacity:.85;margin-bottom:.4rem}
 .hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,1rem + 1.6vw,2rem);max-width:24ch;margin-top:1.6rem;color:rgba(252,248,240,.96);text-shadow:0 1px 20px rgba(6,48,59,.4)}
 .hero-foot{position:absolute;left:var(--pad);right:var(--pad);bottom:1.6rem;display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:rgba(252,248,240,.85);z-index:1}
@@ -158,13 +154,9 @@ body[data-page="about"] .page--about{display:block}
 .vign{border-radius:16px;overflow:hidden;aspect-ratio:4/5;position:relative;box-shadow:0 22px 45px -30px rgba(11,55,65,.45)}
 .vign svg{width:100%;height:100%}
 .vign .cap{position:absolute;left:1.1rem;bottom:1rem;color:var(--foam);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 12px rgba(6,48,59,.6)}
-.island-band{margin:clamp(2.5rem,6vw,4rem) auto 0;max-width:760px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 26px 55px -34px rgba(11,55,65,.5)}
-.island-band img{width:100%;height:clamp(220px,40vw,420px);object-fit:cover;display:block;transform-origin:center;animation:bandpan 28s ease-in-out infinite alternate}
-@keyframes bandpan{from{transform:scale(1.08) translateX(-2%)}to{transform:scale(1.08) translateX(2%)}}
-.island-band .cap{position:absolute;left:1.2rem;bottom:1rem;color:var(--foam);font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 12px rgba(6,48,59,.75)}
 
 /* ===== ABOUT ===== */
-.about{background:linear-gradient(180deg,rgba(9,42,49,.78) 0%,rgba(7,38,45,.82) 55%,rgba(5,32,38,.93) 100%),#06303B url("gallery-1.jpg") center/cover fixed;color:var(--foam);padding-block:calc(var(--topnav) + clamp(3.5rem,7vw,5.5rem)) clamp(4rem,9vw,6rem);position:relative;overflow:hidden;min-height:calc(100svh - var(--botnav))}
+.about{background:linear-gradient(180deg,#0B6168 0%,#06303B 75%);color:var(--foam);padding-block:calc(var(--topnav) + clamp(3.5rem,7vw,5.5rem)) clamp(4rem,9vw,6rem);position:relative;overflow:hidden;min-height:calc(100svh - var(--botnav))}
 .about .scene{position:absolute;left:0;right:0;bottom:0;width:100%;opacity:.5;z-index:0}
 .about .wrap{position:relative;z-index:1;max-width:640px;text-align:center}
 .about .eyebrow{color:var(--shallow)}
@@ -266,10 +258,7 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
 .siteform .group{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--reef);margin:1.9rem 0 .9rem;padding-top:1.2rem;border-top:1px solid var(--line)}
 .siteform .group:first-child{margin-top:0;padding-top:0;border-top:none}
 .f3{display:flex;gap:.7rem}.f3 .f{flex:1}
-.vign img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:center;animation:breathe 20s ease-in-out infinite alternate}
-.vign:nth-child(2) img{animation-duration:24s;animation-delay:-5s}
-.vign:nth-child(3) img{animation-duration:22s;animation-delay:-9s}
-@keyframes breathe{from{transform:scale(1.02)}to{transform:scale(1.13) translate(-1.5%,-1%)}}
+.vign img{width:100%;height:100%;object-fit:cover;display:block}
 .adminstatus{border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1.4rem;font-size:.92rem;line-height:1.55}
 .adminstatus.bad{background:#fbe9e6;border:1px solid #e0a99c;color:#8a2f1d}
 .adminstatus.warn{background:#fbf3e2;border:1px solid #e3c98a;color:#7a5a14}
@@ -315,16 +304,16 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
 <!-- ===== HOME ===== -->
 <section class="page page--home">
   <div class="hero">
-    <div class="hero-photo"></div><div class="hero-scrim"></div>
-    <div class="hero-life" aria-hidden="true">
-      <span class="glint" style="top:30%;left:16%;animation-delay:0s"></span>
-      <span class="glint" style="top:52%;left:8%;animation-delay:1.3s"></span>
-      <span class="glint" style="top:68%;left:22%;animation-delay:2.1s"></span>
-      <span class="glint" style="top:40%;left:84%;animation-delay:.7s"></span>
-      <span class="glint" style="top:74%;left:72%;animation-delay:2.8s"></span>
-      <span class="glint" style="top:58%;left:90%;animation-delay:1.8s"></span>
-      <svg class="drift-boat" viewBox="0 0 64 22"><path d="M2 11 Q20 2 50 6 Q60 8 62 11 Q60 14 50 16 Q20 20 2 11 Z" fill="rgba(55,38,26,.85)"/><path d="M10 11 H48" stroke="rgba(232,216,188,.7)" stroke-width="1.2"/></svg>
-    </div>
+    <div class="hero-sea"></div><div class="hero-glow"></div>
+    <svg class="hero-scene" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g class="sun"><circle cx="1040" cy="92" r="46" fill="rgba(255,238,200,.9)"/><circle cx="1040" cy="92" r="78" fill="rgba(240,192,106,.25)"/></g>
+      <ellipse cx="430" cy="150" rx="150" ry="20" fill="none" stroke="rgba(252,248,240,.5)" stroke-width="1.4" stroke-dasharray="3 6"/>
+      <ellipse cx="430" cy="150" rx="150" ry="20" fill="rgba(127,215,204,.12)"/>
+      <g class="dhoni" transform="translate(700,168)"><path d="M-26 8 Q0 22 26 8 L20 8 Q0 14 -20 8 Z" fill="rgba(8,40,49,.85)"/><path d="M0 8 L0 -26" stroke="rgba(8,40,49,.85)" stroke-width="2"/><path d="M0 -24 Q16 -16 2 -4 Z" fill="rgba(252,248,240,.85)"/></g>
+      <path class="shimmer" d="M120 250 q120 -10 240 0 t240 0 t240 0" stroke-width="2"/>
+      <path class="shimmer b" d="M60 300 q140 -12 280 0 t280 0 t280 0 t280 0" stroke-width="2"/>
+      <path class="shimmer c" d="M200 350 q120 -10 240 0 t240 0 t240 0 t240 0" stroke-width="2.5"/>
+    </svg>
     <div class="wrap hero-content">
       <span class="eyebrow" id="heroEyebrow">26 atolls · 1,192 islands · one ocean</span>
       <h1><span class="dv" dir="rtl" lang="dv" id="heroDv">އެކުވެރިން</span><span id="heroTitle">ekuveri</span></h1>
@@ -361,7 +350,6 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
         <div class="fact"><div class="n" id="fact2n">1,192</div><div class="l" id="fact2l">Islands</div></div>
         <div class="fact"><div class="n" id="fact3n">1</div><div class="l" id="fact3l">Language · Dhivehi</div></div>
       </div>
-      <figure class="island-band"><img src="island-wide.jpg" alt="An aerial view of a small island ringed by white sand and turquoise shallows, a dhoni entering frame" loading="lazy"><figcaption class="cap">somewhere in Huvadhu</figcaption></figure>
     </div>
   </div>
 </section>
@@ -408,12 +396,33 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
       <div class="head">
         <span class="eyebrow">A few moods</span>
         <h2 id="galleryTitle">The light here does most of the work.</h2>
-        <p id="galleryNote">A few frames from around the islands.</p>
+        <p id="galleryNote">Hand-drawn for now — swap in your own photographs whenever you like.</p>
       </div>
       <div class="vign-grid" id="vignGrid">
-        <div class="vign"><img src="gallery-1.jpg" alt="A thatched house on a tiny sandbank" loading="lazy"><span class="cap">a house on the water</span></div>
-        <div class="vign"><img src="gallery-2.jpg" alt="Two wooden dhonis moored off a green island" loading="lazy"><span class="cap">boats at rest</span></div>
-        <div class="vign"><img src="gallery-3.jpg" alt="A sea turtle crossing the sand toward the water" loading="lazy"><span class="cap">to the sea</span></div>
+        <div class="vign">
+          <svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" aria-label="The lagoon">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#Bfe7df"/><stop offset="45%" stop-color="#4cc0b8"/><stop offset="100%" stop-color="#0a5560"/></linearGradient></defs>
+            <rect width="320" height="400" fill="url(#g1)"/><ellipse cx="160" cy="150" rx="120" ry="28" fill="#f4ead0" opacity=".9"/><ellipse cx="160" cy="150" rx="95" ry="20" fill="#e8d8b4"/>
+            <path d="M150 150 q6 -40 -4 -64 M160 150 q-2 -44 8 -66 M170 150 q8 -38 2 -60" stroke="#0a5560" stroke-width="2" fill="none" opacity=".6"/>
+            <g stroke="rgba(255,255,255,.5)" fill="none" stroke-width="2" stroke-linecap="round"><path d="M30 300 q60 -8 120 0 t120 0"/><path d="M50 340 q60 -8 120 0 t120 0"/></g>
+          </svg><span class="cap">the lagoon</span>
+        </div>
+        <div class="vign">
+          <svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" aria-label="Golden hour">
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6d79a"/><stop offset="38%" stop-color="#ef9f6e"/><stop offset="64%" stop-color="#9a6f7e"/><stop offset="100%" stop-color="#244e63"/></linearGradient></defs>
+            <rect width="320" height="400" fill="url(#g2)"/><circle cx="200" cy="150" r="40" fill="rgba(255,244,214,.95)"/><circle cx="200" cy="150" r="72" fill="rgba(255,224,168,.3)"/>
+            <g transform="translate(90,250)" fill="rgba(20,40,55,.82)"><path d="M-30 26 Q0 44 30 26 L22 26 Q0 34 -22 26 Z"/><path d="M0 26 L0 -16" stroke="rgba(20,40,55,.82)" stroke-width="2.5"/><path d="M0 -14 Q18 -6 3 6 Z"/></g>
+            <g stroke="rgba(255,236,200,.5)" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 320 q60 -8 120 0 t120 0 t120 0"/><path d="M40 360 q60 -8 120 0 t120 0"/></g>
+          </svg><span class="cap">golden hour</span>
+        </div>
+        <div class="vign">
+          <svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" aria-label="The reef">
+            <defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fc6c0"/><stop offset="55%" stop-color="#0e7d80"/><stop offset="100%" stop-color="#062c38"/></linearGradient></defs>
+            <rect width="320" height="400" fill="url(#g3)"/>
+            <g opacity=".9"><path d="M70 360 q-6 -50 6 -78 q10 26 6 78" fill="#e58a6f"/><path d="M120 360 q-10 -64 0 -96 q14 30 8 96" fill="#f0b86a"/><path d="M180 360 q-4 -44 10 -70 q6 32 -2 70" fill="#e58a6f"/><circle cx="150" cy="150" r="5" fill="#f6d79a"/><circle cx="200" cy="120" r="4" fill="#f6d79a"/><circle cx="100" cy="130" r="3" fill="#f6d79a"/></g>
+            <g fill="#fff" opacity=".85"><circle cx="220" cy="200" r="3"/><circle cx="232" cy="196" r="2.4"/><circle cx="244" cy="204" r="2"/></g>
+          </svg><span class="cap">the reef</span>
+        </div>
       </div>
     </div>
   </div>
