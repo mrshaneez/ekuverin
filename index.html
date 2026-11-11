@@ -85,6 +85,11 @@ body[data-page="about"] .page--about{display:block}
 .hero-photo{position:absolute;inset:0;z-index:-2;background:#06303B url("hero.jpg") center 44%/cover no-repeat;transform-origin:center;animation:kenburns 30s ease-in-out infinite alternate}
 @keyframes kenburns{from{transform:scale(1.03)}to{transform:scale(1.12)}}
 .hero-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,48,59,.34) 0%,rgba(6,48,59,0) 24%,rgba(6,48,59,.10) 50%,rgba(6,48,59,.58) 78%,rgba(5,32,38,.93) 100%)}
+.hero-life{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero-life .glint{position:absolute;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95),rgba(255,255,255,0) 70%);opacity:0;animation:twinkle 5.5s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.9;transform:scale(1)}}
+.hero-life .drift-boat{position:absolute;top:66%;left:-10%;width:54px;height:auto;opacity:0;filter:drop-shadow(0 3px 6px rgba(5,32,38,.5));animation:boatcross 42s linear infinite}
+@keyframes boatcross{0%{left:-10%;opacity:0}7%{opacity:.8}93%{opacity:.8}100%{left:106%;opacity:0}}
 .hero-scene{position:absolute;left:0;right:0;bottom:0;z-index:-1;width:100%;height:auto}
 .shimmer{stroke:rgba(255,255,255,.5);stroke-linecap:round;fill:none;animation:drift 7s ease-in-out infinite}
 .shimmer.b{animation-duration:9s;animation-delay:-2s;stroke:rgba(255,255,255,.35)}
@@ -153,9 +158,13 @@ body[data-page="about"] .page--about{display:block}
 .vign{border-radius:16px;overflow:hidden;aspect-ratio:4/5;position:relative;box-shadow:0 22px 45px -30px rgba(11,55,65,.45)}
 .vign svg{width:100%;height:100%}
 .vign .cap{position:absolute;left:1.1rem;bottom:1rem;color:var(--foam);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 12px rgba(6,48,59,.6)}
+.island-band{margin:clamp(2.5rem,6vw,4rem) auto 0;max-width:760px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 26px 55px -34px rgba(11,55,65,.5)}
+.island-band img{width:100%;height:clamp(220px,40vw,420px);object-fit:cover;display:block;transform-origin:center;animation:bandpan 28s ease-in-out infinite alternate}
+@keyframes bandpan{from{transform:scale(1.08) translateX(-2%)}to{transform:scale(1.08) translateX(2%)}}
+.island-band .cap{position:absolute;left:1.2rem;bottom:1rem;color:var(--foam);font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 12px rgba(6,48,59,.75)}
 
 /* ===== ABOUT ===== */
-.about{background:linear-gradient(180deg,#0B6168 0%,#06303B 75%);color:var(--foam);padding-block:calc(var(--topnav) + clamp(3.5rem,7vw,5.5rem)) clamp(4rem,9vw,6rem);position:relative;overflow:hidden;min-height:calc(100svh - var(--botnav))}
+.about{background:linear-gradient(180deg,rgba(9,42,49,.78) 0%,rgba(7,38,45,.82) 55%,rgba(5,32,38,.93) 100%),#06303B url("gallery-1.jpg") center/cover fixed;color:var(--foam);padding-block:calc(var(--topnav) + clamp(3.5rem,7vw,5.5rem)) clamp(4rem,9vw,6rem);position:relative;overflow:hidden;min-height:calc(100svh - var(--botnav))}
 .about .scene{position:absolute;left:0;right:0;bottom:0;width:100%;opacity:.5;z-index:0}
 .about .wrap{position:relative;z-index:1;max-width:640px;text-align:center}
 .about .eyebrow{color:var(--shallow)}
@@ -257,7 +266,10 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
 .siteform .group{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--reef);margin:1.9rem 0 .9rem;padding-top:1.2rem;border-top:1px solid var(--line)}
 .siteform .group:first-child{margin-top:0;padding-top:0;border-top:none}
 .f3{display:flex;gap:.7rem}.f3 .f{flex:1}
-.vign img{width:100%;height:100%;object-fit:cover;display:block}
+.vign img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:center;animation:breathe 20s ease-in-out infinite alternate}
+.vign:nth-child(2) img{animation-duration:24s;animation-delay:-5s}
+.vign:nth-child(3) img{animation-duration:22s;animation-delay:-9s}
+@keyframes breathe{from{transform:scale(1.02)}to{transform:scale(1.13) translate(-1.5%,-1%)}}
 .adminstatus{border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1.4rem;font-size:.92rem;line-height:1.55}
 .adminstatus.bad{background:#fbe9e6;border:1px solid #e0a99c;color:#8a2f1d}
 .adminstatus.warn{background:#fbf3e2;border:1px solid #e3c98a;color:#7a5a14}
@@ -304,6 +316,15 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
 <section class="page page--home">
   <div class="hero">
     <div class="hero-photo"></div><div class="hero-scrim"></div>
+    <div class="hero-life" aria-hidden="true">
+      <span class="glint" style="top:30%;left:16%;animation-delay:0s"></span>
+      <span class="glint" style="top:52%;left:8%;animation-delay:1.3s"></span>
+      <span class="glint" style="top:68%;left:22%;animation-delay:2.1s"></span>
+      <span class="glint" style="top:40%;left:84%;animation-delay:.7s"></span>
+      <span class="glint" style="top:74%;left:72%;animation-delay:2.8s"></span>
+      <span class="glint" style="top:58%;left:90%;animation-delay:1.8s"></span>
+      <svg class="drift-boat" viewBox="0 0 64 22"><path d="M2 11 Q20 2 50 6 Q60 8 62 11 Q60 14 50 16 Q20 20 2 11 Z" fill="rgba(55,38,26,.85)"/><path d="M10 11 H48" stroke="rgba(232,216,188,.7)" stroke-width="1.2"/></svg>
+    </div>
     <div class="wrap hero-content">
       <span class="eyebrow" id="heroEyebrow">26 atolls · 1,192 islands · one ocean</span>
       <h1><span class="dv" dir="rtl" lang="dv" id="heroDv">އެކުވެރިން</span><span id="heroTitle">ekuveri</span></h1>
@@ -340,6 +361,7 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
         <div class="fact"><div class="n" id="fact2n">1,192</div><div class="l" id="fact2l">Islands</div></div>
         <div class="fact"><div class="n" id="fact3n">1</div><div class="l" id="fact3l">Language · Dhivehi</div></div>
       </div>
+      <figure class="island-band"><img src="island-wide.jpg" alt="An aerial view of a small island ringed by white sand and turquoise shallows, a dhoni entering frame" loading="lazy"><figcaption class="cap">somewhere in Huvadhu</figcaption></figure>
     </div>
   </div>
 </section>
