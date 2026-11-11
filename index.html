@@ -81,11 +81,10 @@ body[data-page="gallery"] .page--gallery,
 body[data-page="about"] .page--about{display:block}
 
 /* ===== HERO (home) ===== */
-.hero{position:relative;min-height:calc(100svh - var(--botnav));display:flex;align-items:center;color:var(--foam);overflow:hidden;isolation:isolate}
-.hero-sea{position:absolute;inset:0;z-index:-2;background:
-  radial-gradient(120% 80% at 72% 18%, rgba(240,192,106,.55) 0%, rgba(240,192,106,0) 42%),
-  linear-gradient(180deg,#F3DCB0 0%,#CFE3D9 18%,#6FC9C4 38%,#1C9C97 56%,#0B6168 76%,#06303B 100%)}
-.hero-glow{position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 40% at 72% 20%, rgba(255,255,255,.45), transparent 60%);mix-blend-mode:screen;opacity:.7}
+.hero{position:relative;min-height:calc(100svh - var(--botnav));display:flex;align-items:flex-end;color:var(--foam);overflow:hidden;isolation:isolate}
+.hero-photo{position:absolute;inset:0;z-index:-2;background:#06303B url("hero.jpg") center 44%/cover no-repeat;transform-origin:center;animation:kenburns 30s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.03)}to{transform:scale(1.12)}}
+.hero-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,48,59,.34) 0%,rgba(6,48,59,0) 24%,rgba(6,48,59,.10) 50%,rgba(6,48,59,.58) 78%,rgba(5,32,38,.93) 100%)}
 .hero-scene{position:absolute;left:0;right:0;bottom:0;z-index:-1;width:100%;height:auto}
 .shimmer{stroke:rgba(255,255,255,.5);stroke-linecap:round;fill:none;animation:drift 7s ease-in-out infinite}
 .shimmer.b{animation-duration:9s;animation-delay:-2s;stroke:rgba(255,255,255,.35)}
@@ -93,9 +92,9 @@ body[data-page="about"] .page--about{display:block}
 @keyframes drift{0%,100%{transform:translateX(-6px);opacity:.5}50%{transform:translateX(10px);opacity:.9}}
 .sun{animation:bob 9s ease-in-out infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .dhoni{animation:sail 12s ease-in-out infinite}@keyframes sail{0%{transform:translateX(0)}100%{transform:translateX(40px)}}
-.hero-content{position:relative;z-index:1;padding-block:8vh}
+.hero-content{position:relative;z-index:1;padding-block:0 7.5rem}
 .hero .eyebrow{color:rgba(252,248,240,.9);text-shadow:0 1px 14px rgba(6,48,59,.4)}
-.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(4.5rem,12vw,9.5rem);line-height:.9;letter-spacing:-.02em;margin:.5rem 0 0;text-shadow:0 2px 40px rgba(6,48,59,.35)}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(4.5rem,12vw,9.5rem);line-height:.9;letter-spacing:-.02em;margin:.5rem 0 0;text-shadow:0 2px 34px rgba(5,32,38,.55),0 1px 3px rgba(5,32,38,.45)}
 .hero h1 .dv{display:block;font-family:var(--thaana-head);font-weight:400;font-size:.26em;letter-spacing:0;opacity:.85;margin-bottom:.4rem}
 .hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,1rem + 1.6vw,2rem);max-width:24ch;margin-top:1.6rem;color:rgba(252,248,240,.96);text-shadow:0 1px 20px rgba(6,48,59,.4)}
 .hero-foot{position:absolute;left:var(--pad);right:var(--pad);bottom:1.6rem;display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:rgba(252,248,240,.85);z-index:1}
@@ -304,16 +303,7 @@ body[data-page="home"] .adminbtn:hover{border-color:#fff}
 <!-- ===== HOME ===== -->
 <section class="page page--home">
   <div class="hero">
-    <div class="hero-sea"></div><div class="hero-glow"></div>
-    <svg class="hero-scene" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <g class="sun"><circle cx="1040" cy="92" r="46" fill="rgba(255,238,200,.9)"/><circle cx="1040" cy="92" r="78" fill="rgba(240,192,106,.25)"/></g>
-      <ellipse cx="430" cy="150" rx="150" ry="20" fill="none" stroke="rgba(252,248,240,.5)" stroke-width="1.4" stroke-dasharray="3 6"/>
-      <ellipse cx="430" cy="150" rx="150" ry="20" fill="rgba(127,215,204,.12)"/>
-      <g class="dhoni" transform="translate(700,168)"><path d="M-26 8 Q0 22 26 8 L20 8 Q0 14 -20 8 Z" fill="rgba(8,40,49,.85)"/><path d="M0 8 L0 -26" stroke="rgba(8,40,49,.85)" stroke-width="2"/><path d="M0 -24 Q16 -16 2 -4 Z" fill="rgba(252,248,240,.85)"/></g>
-      <path class="shimmer" d="M120 250 q120 -10 240 0 t240 0 t240 0" stroke-width="2"/>
-      <path class="shimmer b" d="M60 300 q140 -12 280 0 t280 0 t280 0 t280 0" stroke-width="2"/>
-      <path class="shimmer c" d="M200 350 q120 -10 240 0 t240 0 t240 0 t240 0" stroke-width="2.5"/>
-    </svg>
+    <div class="hero-photo"></div><div class="hero-scrim"></div>
     <div class="wrap hero-content">
       <span class="eyebrow" id="heroEyebrow">26 atolls · 1,192 islands · one ocean</span>
       <h1><span class="dv" dir="rtl" lang="dv" id="heroDv">އެކުވެރިން</span><span id="heroTitle">ekuveri</span></h1>
